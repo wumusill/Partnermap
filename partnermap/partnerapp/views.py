@@ -4,12 +4,34 @@ from django.conf import settings
 
 def home(request):
 
+    return render(request, 'base.html')
+
+
+def board(request):
+    return render(request, 'board.html')
+
+
+def intro(request):
+    return render(request, 'intro.html')
+
+
+def write(request):
+    return render(request, 'write.html')
+
+
+def humanity(request):
+
     context = {
         "api_key": settings.KAKAO_MAPS_API_KEY
     }
 
     partners = Partner.objects.all()
-    return render(request, 'kakao.html', {'partners':partners})
+
+    return render(request, 'humanity.html')
+    # return render(request, 'base.html', {'partners':partners})
+
+def business(request):
+    return render(request)
 
 
 

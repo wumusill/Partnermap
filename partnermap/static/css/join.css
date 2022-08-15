@@ -1,0 +1,116 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    height: 40px;
+    padding: 1rem;
+    color: white;
+    background: rgb(22, 26, 122);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h1, p {
+    margin: 0;
+    font-size: 30px;
+  }
+  
+  main {
+    padding: 1rem;
+    height: 100%;  
+  }
+  
+  body {
+    padding-top: 100px;
+    background: #EEE;
+  }
+  
+  body, html {
+    height: 200%;
+  }
+  
+  .menu{
+    padding: 0 80px;
+  }
+  
+  
+  
+  #wrap {
+    width: 400px;
+    height: 200px;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    background-color: lightblue;
+    text-align: center;
+    margin:auto;
+  }
+  
+  #wrap2 {
+  width: 400px;
+  height: 400px;
+  border: 1px solid rgb(22, 26, 122);
+  border-radius: 5px;
+  background-color: rgb(22, 26, 122);
+  text-align: center;
+  margin:auto;
+  }
+  
+  .login_form {
+    padding: 20px 50px;
+    
+  }
+  
+  .join_membership {
+  padding: 20px 50px;
+  }
+  
+  label {
+    margin-bottom: 14px;
+    width: 290px;
+    height: 30px;
+    font-size: 16px;
+    border: lightgray;
+    color:white
+  }
+  
+  input {
+    margin-bottom: 14px;
+    width: 290px;
+    height: 30px;
+    font-size: 16px;
+    border: lightgray;
+  }
+  
+  button {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    padding: 0 10px;
+    background-color: #fff;
+    border: 1px solid whitesmoke;
+  }
+  
+  h2{
+    font-size: large;
+    color: white;
+  }
+  
+  .banner_1{
+    font-size: large;  
+    margin: 0 15px; 
+    }
+  
+  .banner_2{
+    font-size: large;
+    margin: 0 15px;
+  
+  }
+  
+  .banner_3{
+    font-size: large;
+    margin:0 15px;
+  }
