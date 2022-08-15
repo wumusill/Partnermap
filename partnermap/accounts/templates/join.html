@@ -9,21 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>join membership</title>
-    <link rel="stylesheet" href="{% static 'css/join.css' %}">
+    
 
 </head>
 <body>
     {% block content %}
+    <link rel="stylesheet" href="{% static 'css/join.css' %}">
     <div id="wrap2">
-        <form class="join_membership">
+        <form class="join_membership" method="POST">
+            {% csrf_token %}
             <h2>회원가입</h2>
-            <label> 아이디 : <input id="id" type="text"></label>
-            <label> 비밀번호 : <input id="pw" type="text"></label>
-            <label> 비밀번호 확인 : <input id="r_pw" type="text"></label>
+            <label> 아이디 : <input name="username" type="text"></label>
+            <label> 비밀번호 : <input name="password1" type="password"></label>
+            <label> 비밀번호 확인 : <input name="password2" type="password"></label>
 
         <div>
             <input type="button" value="뒤로 가기" onclick="back();">
-            <input type="button" value="회원가입" onclick="create_id();">
+            <input type="submit" value="회원가입">
         </div>
     </form>
 
@@ -31,7 +33,7 @@
 
     
 
-    <script src="join.js"></script>
+    <script src="{% static 'join.js' %}"></script>
 
     <script>
 

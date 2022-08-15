@@ -1,7 +1,7 @@
-from tkinter import EW
 from django.shortcuts import redirect, render
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
 def login(request):
@@ -33,6 +33,15 @@ def logout(request):
 
 
 def join(request):
-
-    
-    return render(request, 'join.html')
+    if request.method == 'POST':
+        if request.POST['password1'] == request.POST['password2']:
+            user = User.objects.create_user(
+                username = request.POST['username'],
+                password = request.POST['password1']
+            )
+            auth.login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'join_error.html')
+    else: 
+        return render(request, 'join.html')

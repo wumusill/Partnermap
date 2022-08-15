@@ -7,6 +7,7 @@ pm/
 .env
 # C extensions
 *.so
+my_settings.py
 
 # Distribution / packaging
 .Python

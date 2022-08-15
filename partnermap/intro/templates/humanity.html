@@ -1,15 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8"/>
-    <title>Kakao 지도 시작하기</title>
-    <!-- 카카오맵 api js key -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY"></script>
-    <!-- services 라이브러리 불러오기 -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page1</title>
+    
+
 </head>
 <body>
-	<div id="map" style="width:100%;height:400px;"></div>
+    {% block content %}
+    <link rel="stylesheet" href="{% static 'css/intro.css' %}">
+    
+      <div id="wrapper">
+        <div class="topbar" style="position: absolute; top:0;">
+            <!-- 왼쪽 메뉴 -->
+            <div class="left side-menu">
+                <div class="sidebar-inner">
+                    <div id="sidebar-menu">
+                        <ul>
+                            <li class="has_sub"><a href="javascript:void(0);" class="waves-effect">
+                                <i class="fas fa-bars"></i>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 왼쪽 서브 메뉴 -->
+            <div class="left_sub_menu">
+                <div class="sub_menu">
+                    <ul class="big_menu">
+                        <li>단과대학별 제휴업체<i class="arrow fas fa-angle-right"></i></li>
+                        <ul class="small_menu">
+                            <li><a href="{% url 'humanity' %}">인문대학</a></li>
+                            <li><a href="page2.html">사회과학대학</a></li>
+                            <li><a href="page2.html">자연과학대학</a></li>
+                            <li><a href="{% url 'business' %}">경영대학</a></li>
+                            <li><a href="page2.html">공과대학</a></li>
+                            <li><a href="page2.html">전자정보대학</a></li>
+                            <li><a href="page2.html">농업생명환경대학</a></li>
+                            <li><a href="page2.html">사범대학</a></li>
+                            <li><a href="page2.html">생활과학대학</a></li>
+                            <li><a href="page2.html">수의과대학</a></li>
+                            <li><a href="page2.html">약학대학</a></li>
+                            <li><a href="page2.html">의과대학</a></li>
+                            <li><a href="page2.html">융합학과군</a></li>
+
+                        </ul>
+                    </ul>
+                    <ul class="big_menu">
+                        <li>총학생회 제휴업체<i class="arrow fas fa-angle-right"></i></li>
+                    </ul>
+                </div>
+            </div>
+          
+        </div>
+    
+    <!-- 지도 영역-->
+    <!-- 카카오맵 api js key -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+    <!-- services 라이브러리 불러오기 -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+    <div id="map" style="width:60%;height:400px;"></div>
     <!-- 지도 확대 축소 버튼 -->
     <p>
         <button onclick="zoomIn()">확대</button>
@@ -19,6 +74,7 @@
 
     <div>
         {% for partner in partners %}
+        <p>{{ partner.name }}</p>
         <p>{{ partner.address }}</p>
         <p>{{ partner.content }}</p>
         {% endfor %}
@@ -111,5 +167,10 @@
         });
     }
     </script>
+
+
+
+
+    {% endblock %}       
 </body>
 </html>

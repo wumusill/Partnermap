@@ -1,6 +1,7 @@
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
+from .my_settings import myDATABASES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "partnerapp",
     "import_export",
-    "accounts", 
+    "accounts",
+    "intro",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ ROOT_URLCONF = "partnermap.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['partnermap/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -76,12 +78,14 @@ WSGI_APPLICATION = "partnermap.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
+DATABASES = myDATABASES
 
 
 # Password validation
