@@ -1,0 +1,153 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    padding: 1rem;
+    color: white;
+    background: rgb(22, 26, 122);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.menu{
+    padding: 0 80px;
+}
+
+.banner_1{
+    font-size: large;  
+    margin: 0 15px; 
+   }
+   
+.banner_2{
+       font-size: large;
+       margin: 0 15px;
+   
+   }
+   
+.banner_3{
+       font-size: large;
+       margin:0 15px;
+   }
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&display=swap');
+
+* {
+    font-family: 'Montserrat';
+}
+
+/*게시판 박스*/
+.mainboard {
+    width: 900px;
+    padding: 70px;
+    margin: 30px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #ebebeb;
+    padding-top: 10px;
+    padding-left: 40px;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+
+/*친구찾기*/
+.main-title {
+    font-size:25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*동네 파트너 찾기!*/
+.sub-title {
+    font-size:14px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+/*게시판소개*/
+th {
+    font-size:17px;
+    color:#282828;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+/*게시판 목록*/
+.board_wrap {
+    padding-top: 30px;
+    width: 100%;
+}
+
+.board_list, td {
+    padding: 10px;
+}
+
+thead {
+    border-top: 2px solid navy;
+}
+
+/*글쓰기버튼*/
+.write {
+    margin-left: 830px;
+    margin-top: 20px;
+}
+
+/*게시판제목*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    margin:0px;
+    padding:0px;
+    padding-top: 20px;
+    min-width: fit-content;
+}
+
+/*page*/
+.page {
+    margin-top: 15px;
+    font-size: 0px;
+    text-align: center;
+}
+
+.page a {
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+.page a.pp {
+ background-color: rgb(244, 244, 244);
+ margin-left: 10px;
+}
+
+.page a.num {
+    border:1px;
+}
+
+.page a.num.on {
+
+    font-weight: bolder;
+    color: navy;
+}
+
+.btn{
+    background-color: rgb(244, 244, 244);
+    margin-left: 10px;
+    float: right;
+}
