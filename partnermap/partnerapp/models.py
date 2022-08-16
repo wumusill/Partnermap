@@ -6,9 +6,16 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    # author = models.ForeignKey(User, on_delete=models.CASCADE)
+    hit = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    @property
+    def update_counter(self):
+        self.hit += 1
+        self.save()
 
 
 # 댓글 class

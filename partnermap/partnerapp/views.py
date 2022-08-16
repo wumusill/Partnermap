@@ -14,7 +14,6 @@ def board(request):
     paginator = Paginator(posts, 5)
     pagenum = request.GET.get('page')
     posts = paginator.get_page(pagenum)
-
     return render(request, 'board.html', {"posts":posts})
 
 
@@ -39,7 +38,9 @@ def postcreate(request):
     if request.method == "POST" or request.method == 'FILES':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            unfinished = form.save(commit=False)
+            # unfinished.author = request.user
+            unfinished.save()
             return redirect('board')
 
     # requeset method가 GET일 경우

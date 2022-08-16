@@ -15,7 +15,7 @@
 <body>
     <link rel="stylesheet" href="{% static 'css/board.css' %}">
 
-      <div class="mainboard">
+    <div class="mainboard">
         <div class="title-box">
           <p class="main-title">친구 찾기</p>
           <p class="sub-title">공부, 운동, 취미 생활 같이 할 동네 파트너 찾기!</p>
@@ -38,6 +38,7 @@
                     <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
                     <td>작성자</td>
                     <td>{{ post.date }}</td>
+                    <td>{{ post.hit }}</td>
                 </tr>              
                 {% endfor %}
                   
@@ -50,13 +51,7 @@
         <a href="?page={{posts.previous_page_number}}" class="pp">이전 페이지</a>
         {% endif %}
         
-        <span>{{ posts.number }}</span>
-        <span> / </span>
-        <span>{{ posts.paginator.num_pages }}</span>
-
-        <!-- <a href="#" class="num on">1</a>
-        <a href="#" class="num">2</a>
-        <a href="#" class="num">3</a> -->
+        <a href="#" class="num">{{ posts.number }}/{{ posts.paginator.num_pages }}</a>
 
         {% if posts.has_next %}
         <a href="?page={{posts.next_page_number}}" class="pp">다음 페이지</a>

@@ -3,19 +3,21 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page1</title>
-    
+
 
 </head>
+
 <body>
     {% block content %}
     <link rel="stylesheet" href="{% static 'css/intro.css' %}">
-    
-      <div id="wrapper">
+
+    <div id="wrapper">
         <div class="topbar" style="position: absolute; top:0;">
             <!-- 왼쪽 메뉴 -->
             <div class="left side-menu">
@@ -58,119 +60,61 @@
             </div>
           
         </div>
-    
-    <!-- 지도 영역-->
-    <!-- 카카오맵 api js key -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
-    <!-- services 라이브러리 불러오기 -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-    <div id="map" style="width:60%;height:400px;"></div>
-    <!-- 지도 확대 축소 버튼 -->
-    <p>
-        <button onclick="zoomIn()">확대</button>
-        <button onclick="zoomOut()">축소</button>
-        <span id="maplevel"></span>
-    </p>
-
-    <div>
-        {% for partner in partners %}
-        <p>{{ partner.name }}</p>
-        <p>{{ partner.address }}</p>
-        <p>{{ partner.content }}</p>
-        {% endfor %}
     </div>
 
+    <!-- 표 -->
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
 
-    <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-        mapOption = { 
-            center: new kakao.maps.LatLng(36.632687, 127.458537), // 지도의 중심좌표
-            level: 4 // 지도의 확대 레벨
-        };
+    <div class="mainboard">
+        <div class="title-box">
+          <p class="main-title">인문대학 제휴 목록</p>
+          <p class="sub-title">조회 결과</p>
+        </div>
 
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-
-    // 지도 레벨을 표시합니다
-    displayLevel();
+          <table class="board_wrap">
+            <thead class="board_list">
+                <tr align="center">
+                    <th width="300">업체명</th>
+                    <th width="120">제휴 내용</th>
+                    <th width="120">주소</th>
+                    <th width="70">좋아요</th>
+                    <th width="70">싫어요</th>
+                </tr>
+            </thead>
+            
+            <tbody class="board_r">
+                {% for partner in partners %}
+                <tr>
+                    <td>{{ partner.name }}</td>
+                    <td>{{ partner.content }}<td>
+                    <td>{{ partner.address }}</td>
+                    <td></td>
+                </tr>              
+                {% endfor %}
+                  
+            </tbody>
+    </table>
     
-    // 지도 레벨은 지도의 확대 수준을 의미합니다
-    // 지도 레벨은 1부터 14레벨이 있으며 숫자가 작을수록 지도 확대 수준이 높습니다
-    function zoomIn() {        
-        // 현재 지도의 레벨을 얻어옵니다
-        var level = map.getLevel();
+    <div class="page">
+        {% if partners.has_previous %}
+        <a href="?page=1" class="pp">첫 페이지</a>
+        <a href="?page={{partners.previous_page_number}}" class="pp">이전 페이지</a>
+        {% endif %}
         
-        // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-        map.setLevel(level - 1);
-        
-        // 지도 레벨을 표시합니다
-        displayLevel();
-    }    
+        <a href="#" class="num">{{ partners.number }}/{{ partners.paginator.num_pages }}</a>
 
-    function zoomOut() {    
-        // 현재 지도의 레벨을 얻어옵니다
-        var level = map.getLevel(); 
-        
-        // 지도를 1레벨 올립니다 (지도가 축소됩니다)
-        map.setLevel(level + 1);
-        
-        // 지도 레벨을 표시합니다
-        displayLevel(); 
-    }    
-    
-    function displayLevel(){
-        var levelEl = document.getElementById('maplevel');
-        levelEl.innerHTML = '현재 지도 레벨은 ' + map.getLevel() + ' 레벨 입니다.';
-    }
-    // 지도 레벨 끝
+        {% if partners.has_next %}
+        <a href="?page={{partners.next_page_number}}" class="pp">다음 페이지</a>
+        <a href="?page={{partners.paginator.num_pages}}" class="pp">마지막 페이지</a>
+        {% endif %}
+    </div>
 
+    </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-
-
-    // 마커를 표시할 위치와 title 객체 배열입니다 
-    var positions = [
-        {
-            title: '카카오', 
-            latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-        },
-        {
-            title: '생태연못', 
-            latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-        },
-        {
-            title: '텃밭', 
-            latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-        },
-        {
-            title: '근린공원',
-            latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-        }
-    ];
-
-    // 마커 이미지의 이미지 주소입니다
-    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-        
-    for (var i = 0; i < positions.length; i ++) {
-        
-        // 마커 이미지의 이미지 크기 입니다
-        var imageSize = new kakao.maps.Size(24, 35); 
-        
-        // 마커 이미지를 생성합니다    
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-        
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-            map: map, // 마커를 표시할 지도
-            position: positions[i].latlng, // 마커를 표시할 위치
-            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-            image : markerImage // 마커 이미지 
-        });
-    }
-    </script>
-
-
-
-
-    {% endblock %}       
+    {% endblock %}
 </body>
+
 </html>
