@@ -1,9 +1,7 @@
 from django.contrib import admin
 from import_export.admin import ExportActionModelAdmin, ImportExportMixin, ImportMixin
-from .models import Partner, PartnerAll, PartnerBusiness, PartnerHumanity
+from .models import Partner, PartnerBusiness, PartnerHumanity
 
-# Data 전체
-admin.site.register(PartnerAll)
 
 # 총학생회
 class PartnerAdmin(ImportExportMixin, admin.ModelAdmin):

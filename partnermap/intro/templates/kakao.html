@@ -4,7 +4,7 @@
 	<meta charset="utf-8"/>
     <title>Kakao 지도 시작하기</title>
     <!-- 카카오맵 api js key -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=" + {{ kakao_api }}></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4afeb8d594d4e6d3248d7b3babe8bb36" + {{ kakao_api }}></script>
     <!-- services 라이브러리 불러오기 -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
 </head>
@@ -16,14 +16,6 @@
         <button onclick="zoomOut()">축소</button>
         <span id="maplevel"></span>
     </p>
-
-    <div>
-        {% for partner in partners %}
-        <p>{{ partner.name }}</p>
-        <p>{{ partner.address }}</p>
-        <p>{{ partner.content }}</p>
-        {% endfor %}
-    </div>
 
 
     <script>
@@ -75,8 +67,8 @@
     // 마커를 표시할 위치와 title 객체 배열입니다 
     var positions = [
         {
-            title: '카카오', 
-            latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+            title: '중심', 
+            latlng: new kakao.maps.LatLng(36.632687, 127.458537)
         },
         {
             title: '생태연못', 
