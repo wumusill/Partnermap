@@ -74,11 +74,11 @@
           <table class="board_wrap">
             <thead class="board_list">
                 <tr align="center">
-                    <th width="300">업체명</th>
-                    <th width="120">제휴 내용</th>
-                    <th width="120">주소</th>
-                    <th width="70">좋아요</th>
-                    <th width="70">싫어요</th>
+                    <th width="200">업체명</th>
+                    <th width="500">제휴 내용</th>
+                    <th width="450">주소</th>
+                    <th width="100">좋아요</th>
+                    <th width="100">싫어요</th>
                 </tr>
             </thead>
             
@@ -86,7 +86,7 @@
                 {% for partner in partners %}
                 <tr>
                     <td>{{ partner.name }}</td>
-                    <td>{{ partner.content }}<td>
+                    <td>{{ partner.content }}</td>
                     <td>{{ partner.address }}</td>
                     <td></td>
                 </tr>              

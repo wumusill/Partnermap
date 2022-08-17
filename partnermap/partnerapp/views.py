@@ -3,10 +3,37 @@ from .models import Post
 from .forms import PostForm, CommentForm
 from django.conf import settings
 from django.core.paginator import Paginator
+from intro.models import PartnerAll
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     return render(request, 'base.html')
+
+
+def preference(request):
+     # 모든 제휴 Data
+    partners = PartnerAll.objects.all()
+    paginator = Paginator(partners, 20)
+    pagenum = request.GET.get('page')
+    partners = paginator.get_page(pagenum)
+
+    like_partners = PartnerAll.objects.all().order_by('-like_count')[:5]
+
+    return render(request, 'preference.html', {'partners':partners, 'like_partners':like_partners})
+
+
+def likes(request, partner_id):
+    like_p = get_object_or_404(PartnerAll, id=partner_id)
+    if request.user in like_p.like.all():
+        like_p.like.remove(request.user)
+        like_p.like_count -= 1
+        like_p.save()
+    else:
+        like_p.like.add(request.user)
+        like_p.like_count += 1
+        like_p.save()
+    return redirect('preference')
 
 
 def board(request):
@@ -39,7 +66,7 @@ def postcreate(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             unfinished = form.save(commit=False)
-            # unfinished.author = request.user
+            unfinished.author = request.user
             unfinished.save()
             return redirect('board')
 
