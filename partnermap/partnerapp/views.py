@@ -11,9 +11,10 @@ def home(request):
 
 def board(request):
     posts = Post.objects.filter().order_by('-date')
-    paginator = Paginator(posts, 5)
+    paginator = Paginator(posts, 20)
     pagenum = request.GET.get('page')
     posts = paginator.get_page(pagenum)
+    
     return render(request, 'board.html', {"posts":posts})
 
 
@@ -27,6 +28,7 @@ def new_comment(request, post_id):
     filled_form = CommentForm(request.POST)
     if filled_form.is_valid():
         finished_form = filled_form.save(commit=False)
+        finished_form.author = request.user
         finished_form.post = get_object_or_404(Post, pk=post_id)
         finished_form.save()
     return redirect('detail', post_id)

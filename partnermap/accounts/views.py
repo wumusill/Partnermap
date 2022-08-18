@@ -34,14 +34,17 @@ def logout(request):
 
 def join(request):
     if request.method == 'POST':
-        if request.POST['password1'] == request.POST['password2']:
-            user = User.objects.create_user(
-                username = request.POST['username'],
-                password = request.POST['password1']
-            )
-            auth.login(request, user)
-            return redirect('home')
-        else:
-            return render(request, 'join_error.html')
+        try:
+            if request.POST['password1'] == request.POST['password2']:
+                user = User.objects.create_user(
+                    username = request.POST['username'],
+                    password = request.POST['password1']
+                )
+                auth.login(request, user)
+                return redirect('home')
+            else:
+                return render(request, 'differ_pwd.html')
+        except:
+            return render(request, 'join_nothing.html')
     else: 
         return render(request, 'join.html')
