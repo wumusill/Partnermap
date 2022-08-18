@@ -34,18 +34,18 @@
                         <li>단과대학별 제휴업체<i class="arrow fas fa-angle-right"></i></li>
                         <ul class="small_menu">
                             <li><a href="{% url 'humanity' %}">인문대학</a></li>
-                            <li><a href="page2.html">사회과학대학</a></li>
-                            <li><a href="page2.html">자연과학대학</a></li>
+                            <li><a href="{% url 'society' %}">사회과학대학</a></li>
+                            <li><a href="{% url 'science' %}">자연과학대학</a></li>
                             <li><a href="{% url 'business' %}">경영대학</a></li>
-                            <li><a href="page2.html">공과대학</a></li>
-                            <li><a href="page2.html">전자정보대학</a></li>
-                            <li><a href="page2.html">농업생명환경대학</a></li>
-                            <li><a href="page2.html">사범대학</a></li>
-                            <li><a href="page2.html">생활과학대학</a></li>
-                            <li><a href="page2.html">수의과대학</a></li>
-                            <li><a href="page2.html">약학대학</a></li>
-                            <li><a href="page2.html">의과대학</a></li>
-                            <li><a href="page2.html">융합학과군</a></li>
+                            <li><a href="{% url 'engine' %}">공과대학</a></li>
+                            <li><a href="{% url 'elec' %}">전자정보대학</a></li>
+                            <li><a href="{% url 'farm' %}">농업생명환경대학</a></li>
+                            <li><a href="{% url 'teacher' %}">사범대학</a></li>
+                            <li><a href="{% url 'life' %}">생활과학대학</a></li>
+                            <li><a href="{% url 'vet' %}">수의과대학</a></li>
+                            <li><a href="{% url 'medicine' %}">약학대학</a></li>
+                            <li><a href="{% url 'doctor' %}">의과대학</a></li>
+                            <li><a href="{% url 'mixed' %}">융합학과군</a></li>
 
                         </ul>
                     </ul>
@@ -62,7 +62,7 @@
                 경영대학 제휴지도
             </div>
             <div class="map-box">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1bVUZtZnk4b7slJbAcQk3iJSKOBT8A3M&ehbc=2E312F" width="740" height="320"></iframe>
+                <iframe src="https://www.google.com/maps/d/embed?mid=10yjB4mjDAuYQ9XxIsuqul_ygmoX-Xgk&ehbc=2E312F" width="740" height="380"></iframe>
             </div>
         </div>
         <div class="partner">
@@ -74,8 +74,7 @@
                     <thead class="board_list">
                         <tr align="center">
                             <th width="200">업체명</th>
-                            <th width="500">제휴 내용</th>
-                            <th width="450">주소</th>
+                            <th width="600">제휴 내용</th>
                             <th width="100">좋아요 수</th>
                             <th width="100">좋아요</th>
                         </tr>
@@ -86,7 +85,6 @@
                         <tr>
                             <td>{{ partner.name }}</td>
                             <td>{{ partner.content }}</td>
-                            <td>{{ partner.address }}</td>
                             <td>{{ partner.like_count }}</td>
                             {% if user.is_authenticated %}
                             <td>
