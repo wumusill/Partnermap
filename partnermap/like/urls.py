@@ -17,4 +17,5 @@ urlpatterns = [
     path('likes_medicine/<int:partner_id>/', views.likes_medicine, name="likes_medicine"),
     path('likes_doctor/<int:partner_id>/', views.likes_doctor, name="likes_doctor"),
     path('likes_mixed/<int:partner_id>/', views.likes_mixed, name="likes_mixed"),
+    path('likes/<int:partner_id>/', views.likes, name="likes"),
 ]

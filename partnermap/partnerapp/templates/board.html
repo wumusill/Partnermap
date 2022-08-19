@@ -30,14 +30,14 @@
           <p class="sub-title">공부, 운동, 취미 생활 같이 할 동네 파트너 찾기!</p>
         </div>
 
+    
+
           <table class="board_wrap">
             <thead class="board_list">
                 <tr align="center">
                     <th width="300">제목</th>
                     <th width="120">작성자</th>
                     <th width="120">작성일</th>
-                    <th width="70">조회수</th>
-                    <th width="70">좋아요</th>
                 </tr>
             </thead>
             
@@ -46,8 +46,7 @@
                 <tr align="center">
                     <td class="bt"><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
                     <td>{{ post.author.username }}</td>
-                    <td>{{ post.date }}</td>
-                    <td>{{ post.hit }}</td>
+                    <td>{{ post.date|date:"y-m-d H:i" }}</td>
                 </tr>              
                 {% endfor %}
                   

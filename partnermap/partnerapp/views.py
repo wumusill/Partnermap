@@ -24,6 +24,15 @@ def detail(request, post_id):
     return render(request, "detail.html", {'post_detail':post_detail, "comment_form":comment_form})
 
 
+def detail_delete(request, post_id):
+    # login_session = request.session.get('username')
+    post_detail = get_object_or_404(Post, pk=post_id)
+    # if post_detail.author.username == login_session:
+    post_detail.delete()
+    return redirect('board')
+    # else:
+    #     return redirect(f'/board/detail/{post_id}/')
+
 def new_comment(request, post_id):
     filled_form = CommentForm(request.POST)
     if filled_form.is_valid():

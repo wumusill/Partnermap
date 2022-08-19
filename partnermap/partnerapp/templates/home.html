@@ -25,82 +25,82 @@
         </nav>
     </header>
 
-    <div id="wrapper">
-        <div class="topbar" style="position: absolute; top:0;">
-            <!-- 왼쪽 서브 메뉴 -->
-            <div class="left_sub_menu">
-                <div class="sub_menu">
-                    <ul class="big_menu">
-                        <li>단과대학별 제휴업체<i class="arrow fas fa-angle-right"></i></li>
-                        <ul class="small_menu">
-                            <li><a href="{% url 'humanity' %}">인문대학</a></li>
-                            <li><a href="page2.html">사회과학대학</a></li>
-                            <li><a href="page2.html">자연과학대학</a></li>
-                            <li><a href="{% url 'business' %}">경영대학</a></li>
-                            <li><a href="page2.html">공과대학</a></li>
-                            <li><a href="page2.html">전자정보대학</a></li>
-                            <li><a href="page2.html">농업생명환경대학</a></li>
-                            <li><a href="page2.html">사범대학</a></li>
-                            <li><a href="page2.html">생활과학대학</a></li>
-                            <li><a href="page2.html">수의과대학</a></li>
-                            <li><a href="page2.html">약학대학</a></li>
-                            <li><a href="page2.html">의과대학</a></li>
-                            <li><a href="page2.html">융합학과군</a></li>
-
-                        </ul>
-                    </ul>
-                    <ul class="big_menu">
-                        <li>총학생회 제휴업체<i class="arrow fas fa-angle-right"></i></li>
-                    </ul>
-                </div>
-            </div>
-          
-        </div>
-
-        <div class="map">
-            <div class="map-title">
-                총학생회 제휴지도
-            </div>
-            <div class="map-box">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1bVUZtZnk4b7slJbAcQk3iJSKOBT8A3M&ehbc=2E312F" width="740" height="320"></iframe>
-            </div>
-        </div>
-        <div class="partner">
-            <div class="partner-title">
-                총학생회 제휴업체
-            </div>
-            <div class="partner-box">
-
-            </div>
-        </div>
-        <div class="like">
-            <div class="like-title">
-                제휴업체 좋아요 비율
-            </div>
-            <div class="like-box">
-
-                <style>
-                    body { padding: 50px; }
-                    .graph { height: 30px; margin: 0 0 10px; background-color: rgb(219, 219, 219); border-radius: 30px; }
-                    .graph span { display: block; padding: 0 10px; height: 30px; line-height: 30px; text-align: right; background: #8b84ed; 
-                                    border-radius: 30px; box-sizing: border-box; color: white; } 
-                </style>
-
-                <div class="graph">
-                    <span style="width: 75%;">75%</span>
-                </div>
-                <div class="graph">
-                    <span style="width: 50%;">50%</span>
-                </div>
-                <div class="graph">
-                    <span style="width: 30%;">30%</span>
-                </div>
-                <div class="graph">
-                    <span style="width: 20%;">20%</span>
+    <!--About section one-->
+    <section class="py-5 bg-light" id="scroll-target">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="{% static 'img/picture1.jpg' %}" alt="..." /></div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bolder">Our founding</h2>
+                    <p class="lead fw-normal text-muted mb-0">We hope your better life! <br>
+                        지금까지 학생으로서 누릴 수 있었던 혜택들 이용하고 계셨나요? <br> 
+                        파트너맵과 함께라면 더 이상 걱정마세요.</p>
                 </div>
             </div>
         </div>
-
+    </section>
+    <!-- About section two-->
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="{% static 'img/people.jpg' %}" alt="..." /></div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bolder">Services</h2>    
+                    <p class="lead fw-normal text-muted mb-0">파트너맵에서는 단과대학부터 총학생회까지<br> 제휴업체에 대한 정보를 얻을 수 있을 뿐만 아니라 <br> 로그인 시 이용할 수 있는 친구찾기 게시판 등 <br>다양한 서비스를 제공하고 있습니다.<div class=""></div></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team members section-->
+    <section class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <div class="text-center">
+                <h2 class="fw-bolder">Our team</h2>
+                <p class="lead fw-normal text-muted mb-5">Dedicated to quality and your success</p>
+            </div>
+            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+                <div class="member_1">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{% static 'img/ksy.jpeg' %}" alt="..." />
+                        <h5 class="fw-bolder">구자현</h5>
+                        <div class="fst-italic text-muted">Team leader</div>
+                    </div>
+                </div>
+                <div class="member_2">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{% static 'img/lra.JPG' %}" alt="..." />
+                        <h5 class="fw-bolder">이령아</h5>
+                        <div class="fst-italic text-muted">Team member</div>
+                    </div>
+                </div>
+                <div class="member_3">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{% static 'img/hhg.jpeg' %}" alt="..." />
+                        <h5 class="fw-bolder">홍현경</h5>
+                        <div class="fst-italic text-muted">Team member</div>
+                    </div>
+                </div>
+                <div class="member_4">
+                    <div class="text-center">
+                        <img class="img-fluid rounded-circle mb-4 px-4" src="{% static 'img/sgl.jpeg' %}" alt="..." />
+                        <h5 class="fw-bolder">심규리</h5>
+                        <div class="fst-italic text-muted">Team member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+            <!-- Footer-->
+            <footer class="footer py-4">
+                <div class="container">
+                        <div class="col-lg-4 my-3 my-lg-0">
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>    
+                </div>
+            </footer>
+</main>
 
 </body>
 </html>

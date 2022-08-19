@@ -42,7 +42,7 @@
                     </dl>
                     <dl>
                         <dt>작성일</dt>
-                        <dd>{{ post_detail.date }}</dd>
+                        <dd>{{ post_detail.date|date:"y-m-d H:i" }}</dd>
                     </dl>
                 </div>
                 <div style="padding-left: 15px;
@@ -53,18 +53,19 @@
                 class="ct">
                 {{ post_detail.body }}
                 </div>
+                
                 <!-- 댓글 목록 -->
                 {% for comment in post_detail.comment_set.all %}
                 <p>{{ comment }}</p>
                 <p>{{ comment.author.username }}</p>
-                <p>{{ comment.date }}</p>
+                <p>{{ comment.date|date:"y-m-d H:i" }}</p>
                 <hr>
                 {% endfor %}
                 <article class="writebt">
                     <!-- 댓글 입력 공간 -->
                     <form action="{% url 'new_comment' post_detail.id %}" method="POST">
                         {% csrf_token %}
-                        <div class="cont">
+                        <div class="">
                             <dt>댓글</dt>
                             <dd>
                                 {{ comment_form.comment }}
@@ -74,6 +75,7 @@
                     </form>
                 </article>
             </div>
+            <!-- <a href="{% url 'detail_delete' post_detail.id %}" style="color: black;"  class="btn btn-light">글 삭제</a> -->
             <a href="{% url 'board' %}" style="color: black;"  class="btn btn-light">목록</a>
         </div>
     

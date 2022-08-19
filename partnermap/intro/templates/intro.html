@@ -50,57 +50,78 @@
                         </ul>
                     </ul>
                     <ul class="big_menu">
-                        <li><a href="{% url 'intro' %}">총학생회 제휴업체<i class="arrow fas fa-angle-right"></i></a></li>
+                        <li><a href="{% url 'intro' %}">총학생회 제휴업체</a><i class="arrow fas fa-angle-right"></i></li>
                     </ul>
                 </div>
             </div>
           
         </div>
 
-        <div class="map">
+        <div>
             <div class="map-title">
                 총학생회 제휴지도
             </div>
             <div class="map-box">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1bVUZtZnk4b7slJbAcQk3iJSKOBT8A3M&ehbc=2E312F" width="740" height="320"></iframe>
+                <iframe src="https://www.google.com/maps/d/embed?mid=1MX3vmTGOtbSBrio0jqGCEECg2tC1S6Y&ehbc=2E312F" width="740" height="320"></iframe>
             </div>
         </div>
-        <div class="partner">
-            <div class="partner-title">
-                총학생회 제휴업체
-            </div>
-            <div class="partner-box">
 
+        <div>
+            <div class="partner-title">
+                총학생회 제휴 선호도 top 3
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr align="center">
+                            <th width="200">업체명</th>
+                            <th width="500">제휴 내용</th>
+                            <th width="60">좋아요 수</th>
+                        </tr>
+                    </thead>
+                        
+                    <tbody>
+                        {% for like_partner in like_partners %}
+                        <tr>
+                            <td align="center">{{ like_partner.name }}</td>
+                            <td>{{ like_partner.content }}</td>
+                            <td align="center">{{ like_partner.like_count }}</td>
+                        </tr>              
+                        {% endfor %}
+                            
+                    </tbody>
+                </table>
             </div>
         </div>
+
         <div class="like">
             <div class="like-title">
-                제휴업체 좋아요 비율
+                총학생회 제휴업체
             </div>
-            <div class="like-box">
-
-                <style>
-                    body { padding: 50px; }
-                    .graph { height: 30px; margin: 0 0 10px; background-color: rgb(219, 219, 219); border-radius: 30px; }
-                    .graph span { display: block; padding: 0 10px; height: 30px; line-height: 30px; text-align: right; background: #8b84ed; 
-                                    border-radius: 30px; box-sizing: border-box; color: white; } 
-                </style>
-
-                <div class="graph">
-                    <span style="width: 75%;">75%</span>
-                </div>
-                <div class="graph">
-                    <span style="width: 50%;">50%</span>
-                </div>
-                <div class="graph">
-                    <span style="width: 30%;">30%</span>
-                </div>
-                <div class="graph">
-                    <span style="width: 20%;">20%</span>
-                </div>
             </div>
+            <div class="like-wrapper">
+            <table class="like-table">
+                <tr class="tbmenu" > <td>가게명</td> <td>제휴내용</td> <td>좋아요 수</td> <td>좋아요</td></tr>
+                {% for partner in partners %}
+                <tr class="tbct" >  <td>{{ partner.name }}</td> <td>{{ partner.content }}</td> <td>{{ partner.like_count }}</td>
+                {% if user.is_authenticated %}
+                <td>
+                    <a href="{% url 'likes' partner.id %}">
+                    {% if user in partner.like.all %}
+                    좋아요 취소
+                    {% else %}
+                    좋아요
+                    {% endif %}
+                    </a>
+                </td>
+                {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+
+
         </div>
-
-
+    </div>
 </body>
 </html>

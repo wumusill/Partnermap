@@ -128,5 +128,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# KAKAO_API
-KAKAO_MAPS_API_KEY = os.environ.get('KAKAO_MAPS_API_KEY')
+DATE_INPUT_FORMATS = ['%Y-%m-%d']

@@ -15,7 +15,7 @@
     <header>
         <a href="{% url 'home' %}" id="partnermaplogo"><i class="fa-solid fa-handshake-angle"></i>partnermap</a>
         <nav class="menu-bar">
-        <a href="{% url 'home' %}"> <i class="fa-solid fa-map-location-dot"></i> 제휴업체찾기</a>
+        <a href="{% url 'intro' %}"> <i class="fa-solid fa-map-location-dot"></i> 제휴업체찾기</a>
         <a href="{% url 'board' %}"> <i class="fa-solid fa-user-group"></i> 친구찾기</a>
         {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">로그아웃</a>
@@ -57,25 +57,23 @@
           
         </div>
 
-        <div class="map">
+        <div>
             <div class="map-title">
                 경영대학 제휴지도
             </div>
             <div class="map-box">
-                <iframe src="https://www.google.com/maps/d/embed?mid=10yjB4mjDAuYQ9XxIsuqul_ygmoX-Xgk&ehbc=2E312F" width="740" height="380"></iframe>
+                <iframe src="https://www.google.com/maps/d/embed?mid=10yjB4mjDAuYQ9XxIsuqul_ygmoX-Xgk&ehbc=2E312F" width="740" height="320"></iframe>
             </div>
         </div>
-        <div class="partner">
-            <div class="partner-title">
-                경영대학 제휴 TOP 5
-            </div>
-            <div class="partner-box">
-                <!-- 좋아요 순위 -->
-                <div class="mainboard">
-                    
 
-                <table class="board_wrap">
-                    <thead class="board_list">
+        <div>
+            <div class="partner-title">
+                경영대학 제휴 선호도 top 3
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
                         <tr align="center">
                             <th width="200">업체명</th>
                             <th width="500">제휴 내용</th>
@@ -83,7 +81,7 @@
                         </tr>
                     </thead>
                         
-                    <tbody class="board_r">
+                    <tbody>
                         {% for like_partner in like_partners %}
                         <tr>
                             <td align="center">{{ like_partner.name }}</td>
@@ -94,63 +92,36 @@
                             
                     </tbody>
                 </table>
-                
-
-                </div>
-
-
             </div>
         </div>
 
-        <div class="title-box">
-            <p class="main-title">경영대 제휴 목록</p>
-        </div>
-        <table class="board_wrap">
-            <thead class="board_list">
-                <tr align="center">
-                    <th width="200">업체명</th>
-                    <th width="600">제휴 내용</th>
-                    <th width="100">좋아요 수</th>
-                    <th width="100">좋아요</th>
-                </tr>
-            </thead>
-            
-            <tbody class="board_r">
+        <div class="like">
+            <div class="like-title">
+                경영대학 제휴업체
+            </div>
+            </div>
+            <div class="like-wrapper">
+            <table class="like-table">
+                <tr class="tbmenu" > <td>가게명</td> <td>제휴내용</td> <td>좋아요 수</td> <td>좋아요</td></tr>
                 {% for partner in partners %}
-                <tr>
-                    <td>{{ partner.name }}</td>
-                    <td>{{ partner.content }}</td>
-                    <td>{{ partner.like_count }}</td>
-                    {% if user.is_authenticated %}
-                    <td>
-                        <a href="{% url 'likes_business' partner.id %}">
-                        {% if user in partner.like.all %}
-                        좋아요 취소
-                        {% else %}
-                        좋아요
-                        {% endif %}
-                        </a>
-                    </td>
+                <tr class="tbct" >  <td>{{ partner.name }}</td> <td>{{ partner.content }}</td> <td>{{ partner.like_count }}</td>
+                {% if user.is_authenticated %}
+                <td>
+                    <a href="{% url 'likes_business' partner.id %}">
+                    {% if user in partner.like.all %}
+                    좋아요 취소
+                    {% else %}
+                    좋아요
                     {% endif %}
-                </tr>              
+                    </a>
+                </td>
+                {% endif %}
+                </tr>
                 {% endfor %}
-                  
-            </tbody>
-        </table>
+            </table>
 
-        <div class="page">
-            {% if partners.has_previous %}
-            <a href="?page=1" class="pp">첫 페이지</a>
-            <a href="?page={{partners.previous_page_number}}" class="pp">이전 페이지</a>
-            {% endif %}
-            
-            <a href="#" class="num">{{ partners.number }}/{{ partners.paginator.num_pages }}</a>
-    
-            {% if partners.has_next %}
-            <a href="?page={{partners.next_page_number}}" class="pp">다음 페이지</a>
-            <a href="?page={{partners.paginator.num_pages}}" class="pp">마지막 페이지</a>
-            {% endif %}
+
         </div>
-
+    </div>
 </body>
 </html>
