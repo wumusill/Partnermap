@@ -8,6 +8,8 @@ pm/
 # C extensions
 *.so
 my_settings.py
+*.sql
+*.zip
 
 # Distribution / packaging
 .Python
